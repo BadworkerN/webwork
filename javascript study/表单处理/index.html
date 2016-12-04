@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script>
+			addEvent(window, 'load', function(){
+				//四种获取表单方式
+				//var form = document.getElementById('ff');  //HTMLFormElement
+				//var form = document.forms[0]; 
+				//var form = document.forms['myForm'];
+				//var form = document.myForm; //不建议使用
+				
+				//阻止submit按钮的submit事件的默认行为，是不能实现功能的
+//				var sub = document.getElementById('sub');
+//				addEvent(sub, 'click', function(evt){
+//					predef(evt);
+//				});
+				//必须要阻止表单的提交事件的默认行为
+				var form = document.getElementById('ff'); 
+//				addEvent(form, 'submit', function(evt){
+//					preDef(evt);
+//				});	
+//			
+
+				//普通按钮实现提交
+				var btn = document.getElementById('btn');
+				addEvent(btn, 'click', function(evt){
+					form.submit();					
+				});
+			
+			
+			//提交数据的最大问题就是重复提交表单，因为各种原因，当一条数据提交到服务器的时候回出现延迟等待长时间无反应
+			//导致用户不停的点击提交，从而使得重复提交了很多相同的请求，或造成错误，或写入数据库多条相同的信息
+			//第一种方法：不能适用所有的情况
+			addEvent(form, 'submit', function(evt){
+					preDef(evt);
+					document.getElementById('sub').disabled = true;  //禁用了submit按钮
+					setTimeout(function(){
+						form.submit();
+					}, 5000);
+			});
+		
+			
+			//第二种方法：提交之后取消后续的表单提交操作
+			var flag = false;
+			addEvent(form, 'submit', function(evt){
+					preDef(evt);
+					document.getElementById('sub').disabled = true;  //禁用了submit按钮
+					if(flag == true) return;
+					flag = true;
+					setTimeout(function(){
+						form.submit();
+					}, 5000);
+				});
+							
+			
+			
+		//重置表单函数 form.reset();
+		
+		//获取表单元素  input textarea select 其他就算写在表单里面也不算
+			form.elements['user']  //通过name属性或者下标获取
+			//名称相同时，再取下标
+			form.elements['sex'][0];
+			
+			
+		//表单元素共有属性
+		//disabled name type value
+		//form 当前表单元素属于哪个表单
+		
+		
+		//表单元素共有方法
+		//focus  将焦点定位到此
+		//blur  将焦点移走
+		//form.elements['user'].focus();  //文本框会直接获得焦点
+		
+		addEvent(form.elements['user'], 'focus', function(){
+			form.elements['user'].value = '';
+		})
+		
+		
+		//表单事件： blur change focus
+		});
+		</script>
+	</head>
+	<body>
+		<form id="ff" name="myform">
+			姓名：<input type="text" name="user" value="输入数字"><br />
+			<input id="sub" type="submit" value="提交" />
+			<input id="btn" type="button" value="普通按钮" />
+			<label><input type="radio" name="sex" />男</label>
+			<label><input type="radio" name="sex" />女</label>
+		</form>
+	</body>
+</html>

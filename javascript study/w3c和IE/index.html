@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>W3C  ie</title>
+		<script>
+			//通过target判断被触发的对象
+			document.onclick = function(evt){
+				var e = window.event || evt;
+				alert(e.target);
+			}
+			
+			//兼容性写法
+			document.onclick = function(evt){
+				alert(getTarget());
+			}
+			
+			function getTarget(evt){
+				var e = evt || window.event;
+				return e.target || e.srcElement;
+			}
+			
+			//冒泡和捕获
+			//默认是支持冒泡的，会逐层触发事件
+			window.onload = function(){
+				document.getElementsByTagName('input') = function(evt){
+					var e = evt || window.event;
+					e.stopPropagation(); //禁止冒泡
+				}
+			}
+			//但这种方法不支持ie8
+			//兼容性写法
+			window.onload = function(){
+				document.getElementsByTagName('input') = function(evt){
+					stopBubble(evt);
+				}
+			}
+			
+			function stopBubble(evt){
+				var e = evt || window.event;
+				window.event? e.cancelBubble = true : e.stopPropagation();
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

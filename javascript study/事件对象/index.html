@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>事件对象</title>
+		<script>
+		//事件对象：当触发某个事件时，会产生一个事件对象，这个对象包含着与事件相关的信息
+		//事件对象一般称为event对象，这个对象是浏览器通过函数吧这个对象作为隐藏参数传递过来
+			document.onclick = function(){
+				alert(this);  //this表示触发事件的对象
+				alert(arguments[0] || window.event)  //兼容性写法  返回触发事件类型
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

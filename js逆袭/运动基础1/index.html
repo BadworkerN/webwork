@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+		 	*{
+		 		padding: 0px;
+		 		margin: 0px;
+		 	}
+		 	
+			#move{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top:50px;
+			}
+			
+			
+		</style>
+		
+		<script type="text/javascript" src="js/base.js"></script>
+		<script>
+			var timer = null;
+			addEvent(window, 'load', function(){
+				var btn = document.getElementById('btn');
+				addEvent(btn, 'click', function(){
+					startMove();
+				});
+				
+				function startMove(){
+					var div = document.getElementById('move');
+					timer = setInterval(function(){
+						if(div.offsetLeft >= 1000){
+							clearInterval(timer);	
+						}
+						div.style.left = div.offsetLeft + 10 +'px';
+					},30);
+				}
+				
+				var btn1 = document.getElementById('btn1');
+				addEvent(btn1, 'click', function(){
+					var flag = confirm("确定关闭吗");
+					if(flag){
+						self.opener = null;
+//						self.close();
+						window.open("","_self");
+						window.close();
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<div id="move"></div>
+			<input id="btn" type="button" value="开始运动" />	
+			<input id="btn1" type="button" value="关闭窗口" />
+		</div>
+
+	</body>
+</html>

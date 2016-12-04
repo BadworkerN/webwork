@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>面向对象</title>
+		<script>
+			//工厂模式用于解决重复创建多个对象的重复代码
+			function createObj(name, age)
+			{
+				var obj = new Object();
+				obj.name = name;
+				obj.age = age;
+				obj.study = function(){
+					alert("我叫"+this.name+"今年"+this.age+", 我爱学习");
+				}
+				return obj;
+			}
+			
+			var stu= createObj("张三", 23);
+			stu.study();
+			
+			var stu1 = createObj("李四", 45);
+			stu1.study();
+			
+			//工厂模式不能确定具体对象的类型，动物和人都公用
+			
+			
+			//构造函数：没有显示的创建对象，没有使用return返回
+			//后台自动创建对象，this代表了这个对象
+			//后台返回了该对象
+			function Student(name, age)
+			{
+				this.name = name;
+				this.age = age;
+				this.study = function(){
+					alert(this.name+","+this.age);
+				}
+			}
+			var stu = new Student("张三", 23);
+			
+			//总结：
+			//1、构造函数名首字母大写，为了和普通函数做区分
+			//2、在使用构造函数时，必须使用new
+			//3、其实是构造函数模拟整个类
+			
+			
+			//引用类型都含有prototype属性， 该属性用来指向对象
+			var obj = {
+				country:"中国",
+				name: "哈哈"
+			};
+			
+			Student.prototype=obj;//把studentd的原型设置为obj对象
+			//此时所有由构造函数构造的对象，都具有指向obj的引用
+			
+			var stu = new Student("王五", 23);
+			stu.country;  //返回中国，每个对象都具有了同样的属性，且内存中只有一份country属性
+			alert(Student.prototype);//返回object
+			alert(stu.__proto__);//返回object
+			//内置的Object内部没有__proto__属性
+			//总结：类中有prototype属性，而其构造的对象中没有这个属性（可能是私有，无法访问）
+			//由其构造的对象，有个可见的属性为__proto__， 他指向的是原型指向的对象
+			
+			//判断一个对象是否指向了构造函数的原型对象
+			Student.prototype.isPrototypeOf(stu);
+			
+			//对象中和原型对象中都用同名属性，会优先选择对象中的属性
+			stu.name;  //返回张三；
+			
+			stu.hasOwnProperty('name');//返回true
+			//删除一个属性
+			delete stu.name;
+			stu.hasOwnProperty('name'); //对象中是否有这个属性,（而不是原型)， 返回false
+			
+			
+			'name' in stu; //stu对象中是否含有name属性（原型或对象中含有，返回true）
+			
+			
+			//stu.constructor  显示这个对象是如何构造的代码
+			//不覆盖Student prototype属性为obj对象，则constructor方法显示为Student构造的方法
+			//覆盖后，显示为obj的构造方法，为避免这个问题
+			/*1、建议用法
+			 * 	var obj = {
+			 * 	constructor:Student, 告知构造方法是Student
+			 * country:"中国"
+			 * }
+			 * 
+			 * 2、Student.prototype.country = "china";
+			 * 
+			 * 以上两种方法使得stu.constructor返回的是构造Student的代码
+			 */
+			//构造+原型模式
+			function Student(name, age)
+			{
+				this.name = name;
+				this.age = age;
+				
+			}		
+			Student.prototype = {
+				func:function(){
+					alert(this.name + this.age);
+				}
+				
+			}
+		
+			//动态原型模式
+			function Student(name, age)
+			{
+				this.name = name;
+				this.age = age;
+				
+				
+				if(typeof this.func != 'function') //使得原型模式只初始化一次
+				{
+					Student.prototype.func = function(){
+						alert(this.name + this.age);
+					}
+				}
+			}
+			
+			//稳妥构造函数：内部不能使用this 和外部不能使用new
+			
+			function Person(name, age)
+			{
+				var obj = new Object()
+				obj.func = function(){
+					return name+age;
+				}
+				return obj;
+			};
+			
+			var person = Person("lisi", 24);  //变成函数调用
+
+			
+		</script>
+		
+		<!--<script>
+			function Student(name, age)
+			{
+				this.name = name;
+				this.age = age;
+			};
+			
+			var obj = {
+				country: "china"
+			};
+			
+			
+			Student.prototype = obj;
+			
+			var stu1 = new Student("张三",16);
+			alert(stu1.__proto__);
+		</script>-->
+	</head>
+	<body>
+		
+	</body>
+</html>

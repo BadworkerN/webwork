@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>正则表达式</title>
+		<!--<script>
+			//验证一个QQ是否合法
+			var qq = "53ffse45";
+			var reg = /[1-9][0-9]{4,14}/;
+			alert(reg.test(qq));
+			//正则表达式用来验证客户端的输入数据
+			
+			//RegExp表示正则表达式对象
+			//RegExp(string, [pattern]) //pattern可选项：i:不分大小写， g:全局匹配  m:多行匹配
+			var reg1 = new RegExp("hello", "ig");
+			
+			//字面量方式  var reg = /hello/ig;
+			
+			//使用正则表达式 test()  和  exec()
+			var reg2 = new RegExp("hello");
+			var reg3 = /hello/;
+			var str = "hello world";
+			alert(reg2.test(str));  //含有hello就算匹配，返回true
+			alert(reg3.test(str));
+			
+			//exec(str) 返回数组对象，表示与正则表达式匹配的字符串， 没有匹配返回null
+			
+			
+			//String中正则表达式方法
+			var reg = /hello/i;
+			var str = "Hello world , hello kitty";
+			str.match(reg);  //返回第一个hello的数组 ,想要返回所有的hello ,则模式改成ig
+			
+			//search用法和match相同，但返回值是下标
+			
+			//replace(reg, str)  正则表达式查找的部分，替换成str
+			var chr = str.replace(reg, "hehe"); //返回字符串，原字符串不变
+
+			//split(reg) 按符合正则表达式的方式切割
+			var reg4 = new RegExp(" "); 
+			var arr = str.split(reg4);
+			alert(arr.length);
+		</script>-->
+		
+		<!--<script>
+			//正则表达式的规则
+			//1、 .表示任意字符
+			var reg = /b..k/;
+			var str = "book";
+			reg.test(str);  //true
+			
+			//2、 ?表示出现0次或1次  *表示出现0次或多次  +表示出现1次或多次
+			var reg = /bo*k/;   //表示0要出现0次或多次
+			
+			//3、 {m,n}表示至少出现m次，至多出现n次； {m,} 至少出现m次；  {m}正好出现m次
+			var reg = /bo{2,4}k/;  //o至少出现2次，最多出现4次
+			
+			//4、[]限定某位上取值范围
+			var reg = /b[a-z]ok/;  //第二位必须为a到z上取值、
+			var reg = /bo[a-zA-Z0-9]k/; //第三位必须为a-z A-Z 0-9上取值
+			var reg = /b[^a-z]ok/;   //第二位不能是a-z
+			
+			//5、 \d表示[0-9] \D表示[^0-9]  \w表示[a-zA-Z0-9]  \W表示[^a-zA-Z0-9]
+			//5、 \d数字  \D非数字  \w数字或字母  \W非数字且非字母
+			
+			//6、写在正则表达式中的^ ,表示匹配行首
+			var reg = /^book/;  //表示所匹配的字符串必须以book作为行首
+			
+			//7、写在正则表达式中的$, 表示必须以什么结尾  匹配行尾
+			var reg = /book$/; //表示必须以book结尾
+			
+			
+			//8、 \s匹配空格，空白字符，制表符，换行符
+			
+			//9、 |表示或者
+			var reg = /javascript|html|css/; //只需要str中有其中一项即可匹配
+			
+			//10、 ()表示分组
+			var reg = /(javascript){2,4}/;  //整个javascrip字符串至少出现两次，最多出现4次
+			var str = "study javascript"; 
+			reg.test(str)  //result: false
+			RegExp.$1  //str中第一个匹配的字符串
+			
+			var reg = /(.*)\s(.*)/;  //任意字符出现零次或多次 空格  任意字符出现零次或多次 
+			var str = "hello world";
+			var chr = str.replace(reg, '$2 $1'); //$1 取第一租
+			alert(chr);
+			
+			//贪婪: + * ? {m,n} {m,} {m}   去最大能够匹配的字符串
+			//惰性：+? *? ?? {m,n}? {m,}? {m}?  在贪婪上面加？变成惰性，取最小能匹配的 
+			var reg = /6(.*)6/;
+			var str = "study 6javacript6 6javacript6 6javacript6";
+			var chr = str.replace(reg, '$1');
+			alert(chr);  //返回 study javacript6 6javacript6 6javacript
+			
+			var reg = /6(.*?)6/;
+			var chr = str.replace(reg, '$1');  //返回 study javacript 6javacript6 6javacript6
+			
+			var reg = /6(.*?)6/ig;
+			var chr = str.replace(reg, '$1');
+			alert(chr);
+			
+			//捕获性分组：返回第一个数据是匹配正则表达式的字符串， 第二个数据是第一个分组中的字符串...
+			var reg = /([a-z]+)\s(\d{4})/;
+			var str = "hello 2020";
+			alert(reg.exec(str)); //hello 2020,hello,2020
+			
+			//非捕获性分组：只返回匹配正则表达式的字符串，和你想捕获的分组 ,在你不想捕获的分组前面加？：
+			var reg = /([a-z]+)\s(?:\d{4})/;
+			var str = "hello 2020";
+			alert(reg.exec(str)); 		//hello 2020,hello	
+			
+			
+			//前瞻捕获：返回含有某个分组为结尾的字符串的前面部分
+			var reg = /go(?=ogl)/;
+			var str = "googl";
+			alert(reg.exec(str));
+			
+		</script>-->
+		
+		<script>
+			//手机号中间4位变成*
+//			var reg = /(\d{3})\d{4}(\d{4})/;		
+//			var phone = "13049838861";
+//			alert(phone.replace(reg, '$1****$2'));
+
+			//验证是否为压缩文件
+//			var reg  = /\w+.zip|gz|rar/;
+//			var str = "test.zip";
+//			alert(reg.test(str));
+
+
+			//验证邮箱
+//			var reg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9_\.\-]+\.[a-zA-Z]+$/;
+//			var email = "381900623@qq.com";
+//			alert(reg.test(email));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

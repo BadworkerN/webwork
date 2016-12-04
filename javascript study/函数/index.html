@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>function</title>
+		<!--<script>
+			//函数，数组，对象都是引用类型
+			//函数的声明
+			//1、普通方式
+			function func(num1, num2)
+			{
+				return num1+num2;
+			}
+			
+			
+			//2、使用变量方式
+			var func = function(a, b){
+				return a+b;
+			}
+			
+			//3、使用new创建， 一般不使用，JS会解析两次，效率很低
+			var func = new Function('a', 'b', 'return a+b'); //以参数的形式指定功能
+			
+			//函数做为参数来传递
+			function add(a, b)
+			{
+				return a+b;
+			}
+			
+			function show(fun, num)
+			{
+				alert(fun(num, 88));
+			}
+			
+			show(add, 12);
+		</script>-->
+		
+		<!--<script>
+			//function的内部属性
+			//1、 arguments:指向一个类似数组而不是数组的对象，存储的是实际传递给函数的参数，而不局限于函数声明所定义的参数列表
+			function show(a,b)
+			{
+				alert(arguments.length);
+				if(arguments.length == 1)
+					return arguments[0];
+				else if(arguments.length == 2)
+					return arguments[0]+arguments[1];
+				else if(arguments.length == 3)
+					return arguments[0]+arguments[1]+arguments[2];
+			}
+			
+			show("hello");  //arguments.length返回1
+			show("hello", "world") //arguments.length返回2
+			show("hello", "world", "!")  //arguments.length返回3
+			
+			show.length  //返回2， 意味着函数定义时所指定的参数个数
+			
+			//2、arguments中的callee属性，表示函数对象本身的引用(相当于函数名)
+			function func(n)
+			{
+				if(n == 1)
+					return 1;
+				else
+					return n*arguments.callee(n-1);
+			}
+			
+			var b = 88 //全局变量
+			//全局变量和局部变量
+			function fun()
+			{
+				var a = 66;  //局部变量，只能被其所在的函数中使用
+				var b = 99; 
+				alert(b);  //返回99 ， 当局部变量和全局变量同名时，优先使用局部变量
+			}
+			
+			
+			//与C++不同， 在for和if中定义的变量属于全局变量，在if/for外也能使用
+		</script>-->
+		
+		<script>
+			//this是一个引用， 指向函数被调用时的对象（哪个对象调用了函数，函数内部的this就指向了哪个对象）
+			var name = "zhangsan";
+			function show()
+			{
+				alert(this.name);
+			};
+			show(); //是window对象调用的，是顶层对象，实际相当于window.show(), this指向的就是window对象
+			
+			var obj = {
+				name:"李四",
+				show:function(){
+					alert(this.name);
+				},
+			};
+			obj.show(); //this指向的是obj对象
+			
+			var color = "红色";
+			function fun()
+			{
+				alert(this.color);
+			};
+			
+			var obj = {
+				color:"蓝色"
+			};
+			
+			obj.showColor = fun;
+			obj.showColor();  //里面的this指向obj
+			
+			
+			//函数内部有个prototype中有两个方法： call apply方法(函数传参，并调用的方法)
+			function sum(num1, num2)
+			{
+				return num1+ num2;
+			}
+			
+			function show1(num1, num2)
+			{
+				return sum.call(this, num1, num2); //第一个参数是调用sum函数的对象，后面参数是传递给sum的实际数据
+			}
+			
+			function show2(num1, num2)
+			{
+				return sum.apply(this, [num1, num2]); //同上，区别在于用数组传递函数参数
+			}
+			
+			alert(show1(10,10));
+			alert(show2(10,10));
+			
+			
+			//可以使用这两个方法，改变调用函数的对象
+			function test()
+			{
+				this.property = "hello world";
+			}
+			
+  			test();  //执行了这几句时，this指向window,相当于个window附加了属性property
+			window.property; //所以可以直接取其中的方法
+			
+			test.call(obj); //this指向obj,同时相当于给obj附加了一个属性property
+			obj.property; //放回hello world
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			//垃圾回收机制
+			//JS内部自动回收，但最好在你不再使用某个对象时，将其赋值为null
+			//instanceof运算符：用来判断是谁的实例
+			//由于typeof对引用类型的返回值都是object，想要更具体就使用instanceof
+			
+			var arr = [1,2,3,4,5];
+			alert(arr instanceof Array);
+				
+		</script>
+	
+	</head>
+	<body>
+		
+	</body>
+</html>

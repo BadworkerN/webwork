@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>匿名函数</title>
+		<script>
+			(function(){
+				alert("hello");
+			})();  //直接调用这个匿名函数
+			
+			(function(name){
+				alert(name);
+			})("张三");  //有参数的匿名函数的调用
+			
+			var str = (function(name){
+				return name;
+			})("张三");  //有返回值的匿名函数的调用
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

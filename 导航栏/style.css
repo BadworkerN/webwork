@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {margin:0px; padding:0px;}
+div {font-family:"微软雅黑" ;
+	font-size:14px;}
+a {
+	display:inline-block;
+	padding:10px 20px;
+	background-color:#0CF;
+	text-decoration:none;
+	color:#FFF;
+	border:#CCC solid 1px;
+	margin-left:1px;
+
+	}
+
+a:hover{background-color:#F96;}
+
+a.first:hover{color:red;}
+
+.first-img{display:none;}
+.second-img{display:none;}
+.third-img{display:none;}
+.forth-img{display:none;}
+
+.buy {height: 30px; width:100px; text-align:center; border:#999 solid 2px; line-height:30px; font-size:20px; background-color:#F00; font-weight: bold; letter-spacing:0.1em;}

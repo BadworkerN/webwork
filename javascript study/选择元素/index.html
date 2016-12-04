@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>选择元素</title>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script>
+			addEvent(window, 'load', function(){
+				var form = document.getElementById('myForm');
+				var select = form.elements['city'];
+				//select.multiple = true;
+				select.size = 3;
+				//options 获取所有选项的集合
+				var opt = select.options;
+				//alert(opt[0].text);
+				
+				//使用表中的DOM方式,写起来麻烦，且兼容性不好
+				//opt[0].getAttribute('value');
+//				addEvent(select, 'change', function(){
+//					alert(this.selectedIndex); //获取被选中的节点的索引
+//					alert(opt[this.selectedIndex].text); //通过索引获取text					
+//				});
+//				
+				//设置被选中的选项
+				//select.selectedIndex = 2;	
+				
+				// selected 查看某个选项是否被选中
+//				addEvent(select, 'change', function(){
+//					if(opt[2].selected)
+//						alert('right');
+//				});
+				
+				//设置被选中的值
+//				opt[2].selected = true;
+				
+				//给选择框添加选项
+				
+				var option = new Option('大连', 'dalian');
+				//这个方式低版本不支持
+//				select.appendChild(option);
+				
+				// add(new, index)  参数 对象 位置
+				select.add(option, 2);
+				
+				//给选择框删除选项, index会重置，从0开始排序
+				select.remove(2);
+				
+				//移动 ：将一个选择框的元素移动到另一个选择框中
+				var other = form.elements['other'];
+				addEvent(select, 'click', function(){
+					other.appendChild(this.options[this.selectedIndex]);
+				});
+				
+				
+				alert(select.selectedIndex);//被选中的选项索引，没有选中的时为-1
+				alert(select.options[0].index);
+				//排列选项： 改变选项的顺序
+				var sz = opt[1];
+				select.insertBefore(sz, opt[0]);
+				
+			});
+
+		</script>
+	</head>
+	<body>
+		<form id="myForm">
+			<select name="city" > <!--通过JS来设置这些属性-->
+				<option value="beiging">北京</option>
+				<option value="shenzheng">深圳</option>
+				<option value="shanghai">上海</option>
+				<option>广州</option>
+			</select>
+			
+			<select name="other">
+				<option>纽约</option>
+			</select>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>阻止事件的默认行为</title>
+		<script>
+		//w3c preventDefault()  ie : retrueValue = flase
+			function addEvent(obj, evt, fn){
+				if(obj,addEventListener){
+					obj.addEventListener(evt, fn, false);
+				}else if(obj.attachEvent){
+					obj.attachEvent('on'+evt, fn);
+				}
+			}
+		
+			//W3C
+//			addEvent(window, 'load', function(){
+//				var a = document.getElementsByTagName('a')[0];
+//				addEvent(a, 'click', function(evt){
+//					evt.preventDefault();
+//				})
+//			});
+			
+			
+			//兼容性写法
+			addEvent(window, 'load', function(){
+				var a = document.getElementsByTagName('a')[0];
+				addEvent(a, 'click', function(evt){
+					predef(evt);
+				});
+			});
+				  
+			function predef(evt){
+				var e = evt || window.event;
+				if(e.preventDefault){
+					e.preventDefault();
+				}else{
+					e.returnValue = false;
+				}				
+			}
+			
+			//上下文菜单事件（右击会显示）contextmenu 事件来修改我们指定的菜单，但前提是把右击的默认行为取消掉
+			
+		</script>
+	</head>
+	<body>
+		<a href="http://www.baidu.com">百度搜索</a>
+	</body>
+</html>

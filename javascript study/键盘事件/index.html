@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>键盘事件</title>
+		<script>
+//			//event对象的keyCode的书信中包含一个与特定键对应的ascii代码
+//			document.onkeydown = function(evt){
+//				var e = evt || window.event;
+//				alert(e.keyCode);
+//				
+//			//此方法对onkeypress： 火狐不支持，其他OK
+//			}
+			
+//			//charCode主要针对onkeypress  但对于IE8以下只能使用keycode
+//			document.onkeypress = function(evt){
+//				var e = evt || window.event;
+//				alert(e.charCode);
+//			
+//			}
+			
+			//兼容写法
+			document.onkeypress = function(evt){
+				alert(getCharCode(evt));
+			}
+			
+			function getCharCode(evt){
+				var e = evt || window.event;
+				if(typeof e.charCode == 'number')
+					return e.charCode;
+				else 
+					return e.keyCode;
+					
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

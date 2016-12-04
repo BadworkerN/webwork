@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>字符串</title>
+		<script>
+			//对象类型所有能使用的方法和属性，基本类型也能使用，但基本类型不能自定义属性和方法
+			//String类型的方法
+			
+			//charAt(index)  通过索引得到字符
+			var ss = "abcdefghijklnm";
+			//alert(ss.charAt(3));
+			
+			//charCodeAt(index) 返回索引对应字符的ASCII编码
+			//alert(ss.charCodeAt(3));
+
+			//fromCharCode() 从编码生成字符串
+			
+			//indexOf(str); 返回在字符串中第一次出现的索引
+			var index = ss.indexOf("ghi");
+			alert(index);
+			
+			//indexOf(str, position) //从position处开始，查找str第一次出现的位置
+			
+			//lastIndexOf(str); //返回在字符串中最后一次出现的索引,不存在时返回-1
+			index = ss.lastIndexOf("abc");
+			alert(index);  //result : 0  
+			
+			//substr(index)  从index开始截取到最后，返回一个新的字符串
+			//substr(index, num) 从index开始，截取num个字符，返回一个新的字符串
+			//substring(begin, end) 从begin开始截取，一直到end的前一个字符
+			
+			
+			//match(str)  返回第一个与str匹配的字符串， 不能匹配返回null
+			//search(str) 返回第一次出现str的起始位置
+			
+			//replace("str", "str1"); 将字符串中的第一个str替换成str1，返回一个新的字符串，原有字符串不变
+			
+			
+			//字符串的切割
+			//split("str"); 依据str切割，返回一个数组
+			
+			//toUpperCase() 小写转大写
+			//toLowerCase() 大写转小写
+			
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>DOM操作内容</title>
+		<!--<script>
+		//1、
+			//innerText 获取的文本时，如有html标签，则标签会被过滤掉
+			//使用innerText设置文本时，加入的如果是标签，会被转义为普通字符
+			//低版本的火狐不支持 而是 textContent
+			window.onload = function(){
+				var div = document.getElementById("div1");
+				//div.innerText = "<p>hello</p>"
+				alert(getContent(div));
+				setContent(div, "setContent");
+				alert(getContent(div));
+			}
+			
+			//获取元素文本内容通用方法
+			function getContent(element){
+				if(typeof element.textContent == "string"){
+					return element.textContent;
+				}else{
+					return element.innerText;
+				}
+			}
+			
+			//设置元素文本内容的方法
+			function setContent(element, text){
+				if(typeof element.textContent == "string"){
+					element.textContent = text;
+				}else{
+					 element.innerText = text;
+				}
+			}
+		</script>-->
+		
+		<script>
+			//2
+			//innerHTML: 不过滤HTML,tips:不能使用body中不能使用的标签，比如 style script
+			window.onload = function(){
+				var div = document.getElementById("div1");
+				div.innerHTML = "haha";
+				alert(div.innerHTML);
+			}
+			
+			// outerText 和 innerText相同
+			// outerHTML 和 innerHTML相同
+			//outer*都不建议使用， 赋值时会把标签去掉
+			
+		</script>
+		
+	</head>
+	<body>
+		<div id = "div1">JS</div>
+	</body>
+</html>

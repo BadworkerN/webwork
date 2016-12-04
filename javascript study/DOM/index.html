@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>DOM</title>
+		<script>
+			//元素节点，属性节点，文本节点
+			
+			
+			//1、getElementById()
+			//2、tagName 从元素得到标签名
+			//3、className 从元素得到类名
+			//4、style.样式名    从元素得到样式，操作样式
+			window.onload = function()
+			{
+				var obj = document.getElementById("div1");
+				alert(obj.tagName);  
+				alert(obj.className);
+			}
+		</script>
+	</head>
+	<body>
+		<div id = "div1" class = "js">html</div>
+		<div id = "div2">css</div>
+		<div id = "div3">js</div>
+	</body>
+</html>

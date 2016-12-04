@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>跨浏览器处理事件</title>
+		<script>
+			//跨浏览器添加事件方法
+			function addEvent(obj, evt, fn){
+				if(obj,addEventListener){
+					obj.addEventListener(evt, fn, false);
+				}else if(obj.attachEvent){
+					obj.attachEvent('on'+evt, fn);
+				}
+			}
+			
+			//跨浏览器删除事件方法
+			function removeEvent(obj, evt, fn){
+				if(obj.removeEventListener){
+					obj.removeEventListener(evt, fn, false);
+				}else if(obj.detachEvent){
+					obj.detachEvent('on'+evt, fn);
+				}
+			}
+			
+			//跨浏览器去事件目标对象
+			function getTarget(evt){
+				if(evt.target){
+					return evt.target;
+				}else if(window.event.srcElement){
+					return window.event.srcElement
+				}
+			}
+			
+			//w3c提供了一个属性，relatedTarget, 这个属性可以在mouseover和mouseout事件中获取从哪里移入和向哪里移除的DOM对象
+//			addEvent(window, 'load', function(){
+//				var div = document.getElementById('div1');
+//				addEvent(div, 'mouseover', function(evt){
+//					alert(evt.relatedTarget);
+//				})//显示从哪移入
+//				addEvent(div, 'mouseout', function(evt){
+//					alert(evt.relatedTarget);
+//				})//显示移出到哪
+//				
+//			});
+			
+			//IE中  fromElement对应mouseover   toElement对应mouseout
+			
+			//跨浏览器移入移出的写法
+			function getTarget(evt){
+				var e = evt || window.event;
+				if(e.srcElement){
+					if(e.type == 'mouseover')
+						return e.fromElement;
+					else
+						return e.toElement;
+				}else if(e.relatedTarget){
+					return e.relatedTarget;
+				}
+			}
+			addEvent(window, 'load',function(){
+				var div = document.getElementById('div1');
+				addEvent(div, 'mouseover', function(evt){
+					alert(getTarget(evt));
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<span>
+			<div id="div1" style="width: 100px; height: 100px; background-color: red;">
+				
+			</div>
+		</span>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>访问行内样式</title>
+		<script>
+			onload = function(){
+				var div = document.getElementById('div1');
+				alert(div.style.color);
+				//元素.style.css样式     tips:font-size这种带横线的要使用驼峰法   fontSize
+				alert(div.style.styleFloat);  //所有ie浏览器都支持
+				alert(div.style.cssFloat); //非IE浏览器支持，ie9以下版本不兼容
+				//兼容性写法
+				alert(div.style.cssFloat || div.style.styleFloat);
+			
+				//style属性只能获取行内样式，对于另外两种形式的内联和链接方式则无法获取到、
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id = "div1" style="color:red; background: #ccc; font-size: 20px; float: right;">JS学习</div>
+	</body>
+</html>

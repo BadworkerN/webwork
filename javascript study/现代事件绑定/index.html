@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>现代事件绑定</title>
+		<script>
+			//冒泡：标签从小到大  捕获：标签从大到小
+			//W3C事件处理函数： addEventListener()  removeEventListener()， 解决了所有的脚本模型存在的问题
+			//参数： 事件名，函数， 是否用冒泡或捕获（true捕获，false冒泡，通常使用false）
+			//1 解决覆盖问题
+//			window.addEventListener('load', function(){
+//				alert('hello');
+//			},false);
+//			
+//			window.addEventListener('load', function(){
+//				alert('world');
+//			},false);
+			
+			//2 同一个事件添加相同的函数，能否屏蔽,解决第二次就不添加了
+			window.addEventListener('load',fun, false);
+			window.addEventListener('load',fun, false);
+			
+			function fun(){
+				alert('hello');
+			}
+			
+			//3 解决this的指向问题
+			
+			
+			//IE中的事件处理函数: attachEvent() detachEvent() 参数： 事件名称 函数名
+			window.attachEvent('onload',function(){
+				alert('hello');
+			});
+			window.attachEvent('load', function(){
+				alert('world');
+			})
+			//在IE8以下版本输出顺序是反的，先反馈world 然后 hello
+			//ie8及以下不能实现屏蔽同名函数，ie11不支持此方法
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

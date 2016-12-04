@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>获取元素可视区大小</title>
+		<script>
+			//1、clientWidth ,clientHeight 获取元素可视区的大小
+			window.onload = function(){
+				var div = document.getElementById('div1');
+				alert(div.clientHeight);  //默认单位是px
+			//增加边框，宽高无变化
+			//增加外边距，宽高无变化
+			//增加滚动条，宽高会变小
+			//增加内边距，宽高会变大
+			
+			//没有使用样式设置宽高：非ie浏览器得到的是计算后的宽高，ie7及以下版本得到的是0
+			}
+			
+			//2、offsetWidth, offsetHeight 获取元素实际大小
+			//增加边框，无变化
+			//增加内边距，增大
+			//增加外边距，无变化
+			//增加滚动条，无变化
+			
+			//3 offsetLeft offsetTop: 可以用来获取相对于父元素的位置
+			
+			//4 scrollLeft scrollTop:获取右边滚动条离上边的间距 ， 下面滚动条离左边的间距
+			
+			//5 clientTop, clientLeft  //获取元素上边框 左边框的宽度 （border的宽度）
+			
+			//6 getBoundingClientRect()
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

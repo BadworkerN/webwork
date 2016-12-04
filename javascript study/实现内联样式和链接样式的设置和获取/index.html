@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>实现内联样式和链接样式的设置和获取</title>
+		<script>
+			//style属性，只能获取和设置行内样式
+			//计算后样式只能获取，不能设置样式
+			//获取链接
+			var link = document.getElementsByTagName('link')[0]; //返回HTMLLinkElement
+			var sheet1 = link.sheet;  //返回CSSStyleSheet iE8以下不支持
+			
+			
+			//获取内联
+			var style = document.getElementsByTagName('style')[0];
+			var sheet2 = style.sheet2; //返回CSSStyleSheet   iE8以下不支持
+			
+			//ie8以下   link.stylesheet获取
+			//兼容写法：
+			var sheet = link.stylesheet || link.sheet;
+			
+			
+			alert(sheet.disabled);   //样式是否被禁用，默认是false
+			sheet.disabled = true;  //禁用链接样式
+			alert(sheet.href);  //获取样式路径
+			alert(sheet.title);  //获取标题
+			
+			//得到所有的样式规则
+			alert(sheet.cssRules[0].cssText);  //获取第一个样式内容 。ie8以下不支持
+			sheet.deleteRule(1);  //删除第二个样式规则，ie8以下不支持
+			sheet.insertRule('body{background-color:red}', 0); //第二个参数设置在样式列表中的排列第几个
+			
+			//ie8以下写法
+			sheet.rules  //获取
+			sheet.removeRule(0)  //删除
+			sheet.addRule('body', 'background-color: red', 0);  //插入
+				
+			//兼容性写法
+			var rules = sheet.cssRules || sheet.rules;
+			
+			//删除
+			function deleteRule(index){
+				if(sheet.deleteRule){
+					sheet.deleteRule(index);
+				}else{
+					sheet.removeRule(index);
+				}
+			}
+			
+			//添加
+			function addRule(sheet, selectorName, style, index){
+				if(sheet.insertRule){
+					sheet.insertRule(selectorName+'{'+'style'+'}', index);
+				}else{
+					sheet.addRule(selectorName, style, index);
+				}
+			}
+			
+			
+			//获取并设置内联或链接中的样式
+			window.onload = function(){
+				//获取所有的样式，包含内联和链接样式
+				var sheet = document.styleSheets[0]; //得到内联或链接，看排序
+				var rules = sheet.cssRules || sheet.rules;
+				var rule = rules[0];
+				//中的style属性用于设置具体样式 和 获取具体样式
+				rule.style.color = blue;  
+				
+//			总结
+//			1 style 属性:行内样式
+//			2 计算后的样式,行内,内联,链接,只能获取
+//			3 CSSRule ,rule (内联和链接)
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>动态加载JS</title>
+		<script type="text/javascript" src="js/test.js"></script> 
+			
+		<!-- 引入即加载，但实际中，是需要时再加载，所以我们需要动态加载JS文件-->
+		<script>
+			var flag = true;
+			if(flag){
+				var script = document.createElement('script');
+				script.type = "text/javascript";
+				script.src = "js/test.js";
+				var head = document.getElementsByTagName('head');
+				head.appendChild(script);
+			}
+			
+			//函数式写法
+			function loadScript(url){
+				var flag = true;
+				if(flag){
+					var script = document.createElement('script');
+					script.type = url;
+					script.src = "js/test.js";
+					var head = document.getElementsByTagName('head');
+					head.appendChild(script);
+				}				
+			}
+		</script>
+		
+		
+		<!--动态执行JS代码-->
+		<script>
+			var flag = true;
+			var script = document.createElement('script');
+			script.src = "js/test.js";
+			//ie8以下不支持
+			var text = document.createTextNode('alert(hello)');
+			script.appendChild(text);
+			//ie8支持
+			script.text = "alert(hello)";
+			var head = document.getElementsByTagName('head');
+			head.appendChild(script);			
+		</script>
+		
+	</head>
+	<body>
+		
+	</body>
+</html>

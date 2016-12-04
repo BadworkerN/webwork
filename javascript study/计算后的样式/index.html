@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>计算后的样式</title>
+		<script>
+		//计算后的样式：设置的样式使用的是设置的，没设置的样式使用的是默认的
+		
+			window.onload = function(){
+				var div = document.getElementById('div1');
+				var style = window.getComputedStyle(div, null);  //第二个参数是伪类
+				//alert(style.color);
+			};
+			
+		//这个方法是存在兼容问题的，低版本支持：currentStyle
+		//兼容性写法
+			window.onload = function(){
+				var div = document.getElementById('div1');
+				if( window.getComputedStyle != undefined){
+					var style = window.getComputedStyle(div, null);
+				}else{
+					var style = div.currentStyle;
+				}
+				alert(style.color);
+			};
+			
+		//为什么能够获取到各种样式？
+		//答：样式一直会驻留在浏览器中，随时可以获取到
+		//计算后的样式可以获取内联和链接样式
+		//复合样式是不能获取到的 
+		//如：border:1px blue solid  在非内联样式中是不能用style.border获取的，必须具体去获取，如：style.border.color
+		
+		</script>
+	</head>
+	<body>
+		<div id = "div1" style=" color: red;"></div>
+	</body>
+</html>

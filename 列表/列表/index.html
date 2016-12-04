@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>板块制作演示</title>
+		<style>
+			*{margin: 0; padding: 0;}
+			ul{list-style-type: none;}
+			.col1{width: 390px; margin: 30px auto; font-family: "微软雅黑"; font-size: 16px;
+			line-height: 2em;}
+				.col1 li{background-image: url(img/li1.png); background-repeat: no-repeat; padding-left: 25px; background-position: left;}
+					.col1 li a{color: dimgray; text-decoration: none;}
+					.col1 li a:hover{color: crimson;}
+					.col1 li span{color: #696969; margin: 0 5px; font-size: 12px;}
+			
+			.col2{width: 640px; margin: 0 auto;}
+				.col2 nav {height: 35px; background: crimson; font-size: 18px; font-family: "微软雅黑"; line-height: 35px;}
+				.col2 nav a{color: aliceblue; text-decoration: none;margin:0 15px;}
+				.col2 nav a:hover{font-weight: bold; color: deepskyblue;}
+				.col2 ul li{line-height: 30px; }
+				.col2 ul li a{text-decoration: none; color: black;}
+				.col2 ul li a:hover{color: #DC143C;}
+				.col2 ul li img{ float: left;}
+				.col2 ul li h4{width: 450px; float: left; font-size: 20px; padding-left: 10px ; height: 30px; overflow: hidden;}
+				.list{margin-top: 20px;}
+				.clearfix:after{content: "";display: block; clear: both;}
+				.col2 ul li ul{float: left; width: 450px;}
+				.col2 ul li ul span{float: left; padding-left: 10px ;}
+				.col2 ul li ul li{background: url(img/col2.png) no-repeat left; padding-left: 15px ; width:200px; height: 30px; overflow: hidden;}
+		</style>
+	</head>
+	<body>
+		<ul class="col1">
+			<li><a href="#">直播</a><span>|</span><a href="#">“宝马案”第一场结束 法院门口苦守宝强</a></li>	
+			<li><a href="#">娱乐</a><span>|</span><a href="#">“蓝瘦香菇”小哥被疑炒作 自称只为娱乐</a></li>	
+			<li><a href="#">搞笑</a><span>|</span><a href="#">笨贼遇到高科技 艾玛我偷个自行车容易吗</a></li>	
+			<li><a href="#">社会</a><span>|</span><a href="#">好心酸！尼泊尔儿童靠吸食强力胶摆脱饥饿</a></li>	
+			<li><a href="#">科技</a><span>|</span><a href="#">果粉速来围观 Apple Watch Series 2开箱</a></li>	
+			<li><a href="#">奇趣</a><span>|</span><a href="#">全程高能！实拍胆大男子竟将大蛇放入裤裆</a></li>	
+			<li><a href="#">生活</a><span>|</span><a href="#">用集装箱改造成海景房 国内这辈子住不上</a></li>	
+		</ul>	
+		
+		<div class="col2">
+			<nav>
+				<a href="#">推荐</a>
+				<a href="#">热点</a>
+				<a href="#">时间号</a>
+				<a href="#">本地</a>
+				<a href="#">社会</a>
+				<a href="#">评论</a>
+				<a href="#">视频</a>
+				<a href="#">图片</a>
+			</nav>
+			
+			<ul>
+				<li class="list clearfix">
+					<a href="#"><img src="img/col2-1.png" alt=""/</a>
+					<h4><a href="#">习近平金秋亚洲行有"三新" 书写中国外交新篇章</a></h4>
+					<ul>
+						<span>
+						<li><a href="#">出席金砖国家领导人会议</a></li>
+						<li><a href="#">"金砖时间"有哪些期待</a></li>
+						</span>
+						<span>
+						<li><a href="#">祝贺神舟十一号发射成功</a></li>
+						<li><a href="#">习近平会见俄罗斯总统普京</a></li>	
+						</span>
+					</ul>
+				</li>
+				<li class="list clearfix">
+					<a href="#"><img src="img/col2-2.jpg" alt=""/</a>
+					<h4><a href="#">国家统计局:前三季度GDP同比增长6.7% 国家统计局:前三季度GDP同比增长6.7%</a></h4>
+					<ul>
+						<span>
+						<li><a href="#">房地产开发投资同比增5.8%</a></li>
+						<li><a href="#">社会消费品零售额增10.7%</a></li>
+						</span>
+						<span>
+						<li><a href="#">民间固定资产投资增长2.5%</a></li>
+						<li><a href="#">规模以上工业增加值增6.1%</a></li>	
+						</span>
+						
+					</ul>					
+				</li>
+			</ul>
+		</div>
+		
+
+	</body>
+</html>

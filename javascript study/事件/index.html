@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>事件</title>
+		<script>
+		//鼠标事件
+			//单击事件  onclick
+			//双击事件 ondblclick
+			//鼠标按下 onmousedown
+			//鼠标抬起 onmouseup
+			//鼠标放上去时 onmouseover
+			//鼠标移开时 onmouseout
+			//鼠标在上面移动时  onmousemove
+			
+		//键盘事件
+			//按下键盘的某个键 onkeydown
+			//放开键盘的某个键 onkeyup
+			//按下字母数字键 onkeypress
+			onkeypress = function(){
+				//alert("haha");
+			}
+			
+		//HTML事件
+				//onload
+				//文本内容被选中时  onselect
+				//用户改变域的内容  onchange
+				//获得焦点：onfocus
+				//失去焦点：onblur
+			
+			//表单的两个事件
+				//提交按钮被点击 onsubmit（表单）
+			onload = function(){
+				var form = document.getElementsByTagName('form')[0];
+				form.onsubmit = function(){
+					alert("提交");
+				}	
+				//重置按钮被点击 onreset（表单）
+				form.onreset = function(){
+					alert("重置");
+				}					
+				
+			}
+			
+			//窗体的两个事件
+				//窗体大小变化
+				window.onresize = function(){
+					alert("窗体大小发生变化");
+				}
+				
+				//滚动条滚动事件
+				window.onscroll = function(){
+					alert("窗体滚动");
+				}
+		</script>
+	</head>
+	<body>
+		<form action="">	
+			<input type="text" />
+			<input type="submit" value="提交"/>
+			<input type="reset" />
+		</form>
+
+	</body>
+</html>

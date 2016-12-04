@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>HTML DOM创建表格</title>
+		<script>
+//			window.onload = function(){
+//				var table = document.createElement('table');
+//				table.createCaption().innerHTML = '学员信息表';
+//				var thead = table.createTHead();
+//				var trThead = thead.insertRow(0);
+//				trThead.insertCell(0).innerHTML = "姓名";
+//				trThead.insertCell(1).innerHTML = "性别";
+//				trThead.insertCell(2).innerHTML = "年龄";
+//				
+//				//tbody th 这些标签需要使用以前的方式创建
+//				
+//				document.body.appendChild(table);
+//			}
+			
+			//使用HTML DOM获取表格中的元素
+			window.onload = function(){
+				var table = document.getElementsByTagName('table')[0];
+				alert(table.caption.innerHTML);
+				alert(table.rows.length);  //得到表格的总行数
+				alert(table.tBodies[0].rows.length);  //第一个tBody中的行数
+				alert(table.tBodies[0].rows[0].ceil(0).innerHTML);  //第一个tBody中的第一行第一列中的内容
+				
+			}
+		</script>
+	</head>
+	<body>
+		<table width="300" border="1">
+			<caption>学员信息表</caption>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>年龄</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>张三</td>
+					<td>男</td>
+					<td>23</td>
+				</tr>
+				
+				<tr>
+					<td>李四</td>
+					<td>男</td>
+					<td>26</td>
+				</tr>				
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3">合计：35人</td>
+				</tr>
+			</tfoot>
+		</table>		
+	</body>
+</html>

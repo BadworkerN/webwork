@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>闭包</title>
+		
+		<script>
+			//闭包：在一个函数内部创建另一个函数，通过另一个函数访问这个函数的局部变量
+			function show()
+			{
+				var name = "lisi";
+				return function(){
+					return name;
+				}();	
+			};
+			//alert(show());
+			
+			
+			//使用闭包的优势
+			//若使用全局变量，安全性会变低
+			//使用闭包，安全性变强
+			//闭包使用的局部变量，不会立刻释放内存
+			
+			function add()
+			{
+				var age = 10;
+				return function(){
+					age++;
+					return age;
+				}
+			};
+			
+			var func = add();
+			//alert(func());
+			//alert(func());
+			
+//----------------分割线----------------------------------------------------------		
+			function add(){
+				var arr = [];
+				for(var i = 0; i < 3; ++i)
+				{
+					arr[i] = function(num){
+						return num;
+					}(i);
+				};
+				
+			i = 0;
+			return arr;
+			}		
+			var a = add();
+//			alert(a[0]);
+//			alert(a[1]);
+//			alert(a[2]);
+
+//----------------分割线-----------------------------------------------------------
+
+			function add(){
+				var arr = [];
+				for(var i = 0; i < 3; ++i)
+				{
+					arr[i] = function(num){
+						return function(){
+							return num;
+						}
+					}(i);
+				};
+				
+			i = 0;
+			return arr;
+			}		
+			var a = add();
+//			alert(a[0]());
+//			alert(a[1]());
+//			alert(a[2]());
+
+			
+//	----------------分割线-----------------------------------------------------------
+
+			//闭包中的this在运行的时候指向window，因为闭包并不属于这个对象的属性和方法
+			var name = "window";
+			var obj = {
+				name:"object",
+				fun:function(){
+					return function(){
+						return this.name;
+					}
+				}
+			};
+			alert(obj.fun()());  //return window
+			
+			var func = obj.fun();
+			alert(func.call(obj));  //使用对象冒充， return object
+			
+//	----------------分割线-----------------------------------------------------------
+
+		//JS不存在块级作用域，所以需要模拟这种效果，可使用闭包
+		function fun(){
+			((function(){
+				for(var i = 0; i < 3; ++i)
+				{
+					alert(i);
+				}
+			})();
+		}
+		
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

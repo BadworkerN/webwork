@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>卸载事件</title>
+		<script>
+			//卸载前事件：beforeunload 这个事件可以在刷新，关闭，或转到其他页面时给出提示
+			function addEvent(obj, evt, fn){
+				if(obj,addEventListener){
+					obj.addEventListener(evt, fn, false);
+				}else if(obj.attachEvent){
+					obj.attachEvent('on'+evt, fn);
+				}
+			}	
+
+			function predef(evt){
+				var e = evt || window.event;
+				if(e.preventDefault){
+					e.preventDefault();
+				}else{
+					e.returnValue = false;
+				}				
+			}
+			
+			addEvent(window, 'beforeunload', function(evt){
+				predef(evt);
+			})
+			
+			
+			//鼠标滚轮事件： mousewheel(非火狐) DOMMouseScroll(火狐)，用于获取鼠标上下滚轮的距离
+			addEvent(document,'mousewheel', function(evt){
+				var e = evt || window.event;
+				alert(e.wheelData);  //wheelData 获取距离
+			});
+			
+			addEvent(document, 'DOMMouseScroll', function(evt){
+				var e = evt || window.event;
+				alert(-e.detail*40);  //与wheelData统一(由于方向相反)
+			});
+			
+			//兼容性写法
+			function getWD(evt){
+				var e = evt || window.event;
+				if(e.wheelData){
+					return e.wheelData;
+				}else if(e.detail){
+					return -e.detail*40;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

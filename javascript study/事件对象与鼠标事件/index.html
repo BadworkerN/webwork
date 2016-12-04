@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>事件对象与鼠标事件</title>
+		<script>
+			//onclick只针对左键按下
+			//而 onmousedown 和 onmouseup事件来说需要区分左中右键
+			//在event对象中存在一个button属性
+			onmousedown = function(){
+				var event = arguments[0] || window.event;
+				alert(event.button);  //按左键返回0  中键返回1  右键返回2 -----W3C标准
+				//对于ie8及以下不属于W3C标准，而是IE标准		
+			}
+			
+			//兼容性右键写法
+			onmouseup = function(evt){
+				alert(getBtn());
+			}
+			
+			//跨浏览器获取鼠标按钮信息
+			function getBtn(evt){
+				var event = evt || window.event;
+				if(evt){
+					return event.button;
+				}else{
+					switch(event.button){
+						case 1: 
+							return 0;
+						case 2:
+							return 2;
+						case 4:
+							return 1;
+					}				
+				}
+			}
+			
+			//距离整个电脑屏幕边边的鼠标距离
+			//screenX  screenY
+			
+			//距离可视区边框的鼠标距离
+			//clientX  clientY
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

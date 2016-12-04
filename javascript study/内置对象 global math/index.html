@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Global and math</title>
+		<script>
+			//所有在全局作用域的变量和函数，都是global对象的属性和方法,不依赖宿主环境
+			//不能直接使用，也不能通过new创建global
+			//区分global和window :window对象时宿主对象，也就是在一定环境中才会生成对象（web浏览器）
+			//URI编码方法： utf-8
+			//encodeURI()不会对本身属于URI的特殊字符进行编码，如冒号，正斜杠，问号 # 
+			//encodeURIComponent() 会对他发现的任何非标准字符进行编码
+			
+			//解码：
+			var s = encodeURI("//李四");
+			alert(s);
+			var ss = decodeURI(s);
+			alert(ss);
+			
+			//同理decodeURIComponent()
+			
+			//isNaN()  判断是否不是一个数字，不是数字返回true
+			//eval()  参数接受的JS代码的字符串，解析字符串成JS代码
+			
+			
+			//Math的属性
+			/*
+			 * Math.E
+			 * Math.LN10
+			 * Math.LN2
+			 * Math.LOG2E
+			 * Math.LOG10E
+			 * Math.PI
+			 * Math.SQRT1_2  1/2的平方根
+			 * Math.SQRT2	2的平方根
+			 */
+			
+			
+			//Math的方法
+			//max()  min()
+			alert(max(3,4,5,67,2,21));
+			//ceil()大于等于的最小整数
+			alert(ceil(23.56));   //return 24
+			//floor()  小于等于的最大整数
+			//round()  四舍五入取整
+			//random()  产生随机数，随机数大于0.0 小于1.0
+			Math.floor(Math.random()*10+1);  //产生1-10的随机数
+			
+			
+			//还有关于math的方法，查看JS手册查询即可，不在赘述
+			
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

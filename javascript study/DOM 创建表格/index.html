@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>DOM 创建表格</title>
+		<script>
+		
+		//使用DOM创建表格很麻烦
+//			window.onload = function(){
+//				var table = document.createElement('table');
+//				table.setAttribute("border","1");
+//				table.setAttribute("width","300px");
+//				var caption = document.createElement('caption');
+//				table.appendChild(caption);
+//				caption.innerHTML = '学员信息表';
+//				
+//				var thead = document.createElement('thead');
+//				table.appendChild(thead);
+//				
+//				var trHead = document.createElement('tr');
+//				thead.appendChild(trHead);
+//				
+//				var thHead1 = document.createElement('th');
+//				trHead.appendChild(thHead1);
+//				thHead1.innerHTML = "姓名";
+//				
+//				var thHead2 = document.createElement('th');
+//				trHead.appendChild(thHead2);
+//				thHead2.innerHTML = "性别";
+//				
+//				var thHead3 = document.createElement('th');
+//				trHead.appendChild(thHead3);	
+//				thHead3.innerHTML = "年龄";
+//				
+//				var tbody = document.createElement('tbody');
+//				table.appendChild(tbody);
+//				
+//				var trBody1 = document.createElement('tr');
+//				tbody.appendChild(trBody1);
+//				
+//				var thBody1Name = document.createElement('td');
+//				trBody1.appendChild(thBody1Name);
+//				thBody1Name.innerHTML = "张三";
+//				
+//				var thBody1Sex = document.createElement('td');
+//				trBody1.appendChild(thBody1Sex );
+//				thBody1Sex .innerHTML = "男";	
+//				
+//				var thBody1Age = document.createElement('td');
+//				trBody1.appendChild(thBody1Age );
+//				thBody1Age .innerHTML = "23";				
+//							
+//				var trBody2 = document.createElement('tr');
+//				tbody.appendChild(trBody2);			
+//		
+//				var thBody2Name = document.createElement('td');
+//				trBody2.appendChild(thBody2Name);
+//				thBody2Name.innerHTML = "李四";
+//				
+//				var thBody2Sex = document.createElement('td');
+//				trBody2.appendChild(thBody2Sex );
+//				thBody2Sex .innerHTML = "男";			
+//				
+//				var thBody2Age = document.createElement('td');
+//				trBody2.appendChild(thBody2Age );
+//				thBody2Age .innerHTML = "24";			
+//				
+//				var tfoot = document.createElement('tfoot');
+//				var trFoot = document.createElement('tr');
+//				tfoot.appendChild(trFoot);
+//				
+//				var tdFoot = document.createElement('td');
+//				trFoot.appendChild(tdFoot);
+//				tdFoot.innerHTML = "合计：35人";
+//				tdFoot.setAttribute("colspan","3")
+//
+//				document.body.appendChild(table);
+//				
+//			}
+			
+			//使用DOM获取表格中的元素
+			onload = function(){
+				//得到table
+				var table = document.getElementsByTagName('table')[0];
+				//alert(table.children[0].innerHTML);
+				//alert(table.children[2].children[1].children[1].innerHTML);
+				//不清晰且麻烦的写法
+				
+				//var tbody = table.getElementsByTagName('tbody')[0];
+				//var tr = tbody.getElementsByTagName('tr')[1];
+				//var td = tr.getElementsByTagName('td')[1];
+				//alert(td.innerHTML);
+				//依旧很麻烦
+			}
+			
+		</script>
+	</head>
+	<body>
+
+		<table width="300" border="1">
+			<caption>学员信息表</caption>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>年龄</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>张三</td>
+					<td>男</td>
+					<td>23</td>
+				</tr>
+				
+				<tr>
+					<td>李四</td>
+					<td>男</td>
+					<td>26</td>
+				</tr>				
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3">合计：35人</td>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+</html>

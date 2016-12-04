@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>继承</title>
+		<script>
+			//继承由原型链实现
+			function Box()
+			{
+				this.name = "Lee";
+			};	
+			function Desk()
+			{
+				this.age = 100;
+			};			
+			Desk.prototype = new Box(); //Box构造了一个对象，让Desk的原型指向他			
+			var desk = new Desk();
+			alert(desk.name);
+			//由这种方式，可一个个继承，实现一个原型链，儿子具有所有祖先的属性和方法
+			//由原型方式实现的继承时的问题
+			//1、当原型中存在引用类型时，会使的父类的对象的值会被改变
+			//2、子类对象无法给父类传递参数
+			
+			//对象冒充：借用构造函数, 可以解决原型链方式实现的继承问题
+			function Test(age)
+			{
+				this.age = age; 
+			}			
+			function Util(age)
+			{
+				Test.call(this,age);
+			}			
+			var u = new Util(24);
+			
+			//由于有些情况，需要使用对某个方法实现共享，这些光用对象冒充是做不到的
+			function Test(age)
+			{
+				this.age = age; 
+			}			
+			
+			Test.prototype.func = function(){
+				//这种方法是无效的，无法访问prototype
+				//因为Util.prototype没有对象指向
+			}
+			function Util(age)
+			{
+				Test.call(this,age);
+			}			
+			var u = new Util(24);			
+			
+			//组合继承（原型链+对象冒充）
+			function Test(age)
+			{
+				this.age = age; 
+			}			
+			
+			Test.prototype.func = function(){
+				return this.age;
+			}
+			function Util(age)
+			{
+				Test.call(this,age);
+			}		
+			Util.prototype = new Text();
+			var u = new Util(24);			
+			
+			
+			//寄生组合继承
+			function getObj(o)
+			{
+				function F(){}
+				F.prototype = o;
+				return new F();
+			}
+			
+			function createObj(person, student)
+			{
+				var obj = getObj(o);
+				return obj;
+			}
+			
+			function Test(age)
+			{
+				this.age = age; 
+			}			
+			
+			Test.prototype.func = function(){
+				return this.age;
+			}
+			function Util(age)
+			{
+				Test.call(this,age);
+			}		
+			Util.prototype = new Text();
+			var u = new Util(24);			
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

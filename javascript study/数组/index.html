@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>javascript数组</title>
+		<!--<script>
+			//创建数组 ,数组和对象都是引用类型
+			//方式一：
+			var arr = new Array(10); //定义了一个可以存放10个数的数组
+			alert(typeof arr);  // result = object
+			
+			//方式二：
+			var arr1 = new Array();
+			arr1[6] = 77;
+			alert(arr1.length);  //显示7  ，数组是动态增长的
+			
+			//方式三：
+			var arr2 = new Array("李四", 45, true);
+			alert(arr2);
+			
+			//总结1：数组的长度是可以改变的
+			//	  2：数组中可以存储不同类型的数据
+			//	  3：new是可以省略的
+			
+			//方式四：
+			var arr3 = [];
+			var arr4 = ["李四", 45, true,"arr4"];
+			alert(arr4);
+			var arr5 = [
+				{
+					name: "李四",
+					age:23,
+					fun:function(){
+						alert("haha");
+					}
+				},
+				[3,4,5,new Object()],
+				"hello",
+				new Array("html", "css", "js")
+			];
+			
+			alert(arr5[0].fun());
+		</script>-->
+		
+	<!--<script>
+		//数组的方法
+		//1. toString() 把数组中的数据转成字符串,中间用逗号分隔
+		//2.join() 把数组用特定的符号间隔成字符串
+		var arr = new Array("聂华吕", 25, "男");
+		alert(arr.join("/"));
+		
+		//push() 向数组末尾添加数据, 返回数组长度
+		alert(arr.push("添加"));
+		//pop() 向数组末尾删除数据， 返回被删除的数据
+		alert(arr.pop());
+		
+		//unshift 向数据开头添加数据，返回数组长度
+		alert(arr.unshift("unshift"));
+		//shift 删除数据开头的数据，并返回被删除的数据
+		alert(arr.shift());
+		
+		//concat() 基于当前数组，创建一个新的数组，并返回该数组
+		var a = arr.concat("concat");
+		alert(a);
+		alert(arr);
+		
+		//slice() 基于当前数组获取指定区域的元素，并返回一个新的数组
+		var b = arr.slice(1,3);  //从下标1直到下标3的前一个位置，所以截取的是1,2
+		alert(b);
+		alert(arr);
+		
+		//splice 删除，插入，替换
+		var c = b.splice(0,2);  //从下标0开始截取删除2个数据，并新建一个数组，将这两个数据加入新数组
+		var d = arr.splice(2,0,"hehe"); //第二项为0删除，第三项表示在原有数组上插入一个数据，新建个新空数组
+		var e = arr.splice(2,1,"splice");//下标为2开始删除一个数据，并在此加上一个数据“splice”,并将被删除的数据放入到一个新数组中
+		
+	</script>-->
+	
+	<script>
+		//数组的排序
+		var a = [4,5,6,1];
+		a.sort();//不加参数就会按ASCII码 ，从小到大排序
+		
+		function Campare(m, n){
+//			if(m > n)
+//				return 1;
+//			if(m < n)
+//				return -1;
+//			else
+//				return 0;
+			return m-n;
+		}
+		
+		a.sort(Campare);  //按函数中的方法排序
+		alert(a);
+	</script>
+		
+	</head>
+	<body>
+		
+	</body>
+</html>

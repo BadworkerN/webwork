@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>时间和日期</title>
+		<script>
+			var d = new Date();
+			
+			var d1 = new Date(1000);  //从1970,1,8:00开始过了1000豪秒后是什么时间
+			var d2 = new Date("4/14/2008");  //这个时间的系统表示
+			
+			
+			var t = Date.parse("1/1/1970 08:00:00");  //将这个日期转成毫秒数
+			
+			var t1 = Date.UTC(1970,0,1,0);  //国际时间
+			
+			
+			//毫秒数转成日期
+			var d3 = new Date(t);
+			var d4 = new Date(t1);
+			
+			//toLocalString() 转成本地时间
+			//toDateString() 只显示日期部分
+			//toTimeString() 只显示时分秒部分
+			//toDateLocalString() 只显示本地格式的日期部分
+			//toTimeLocalString() 只显示本地格式的时分秒部分
+			//toUTCString()  //UTC格式的时间
+			
+			//get或set + 想要获取的部分
+			//UTC格式的 ： get或set + UTC + 想要获取的部分
+			
+			//getTimezoneOffset() 获取本地时间和UTC时间相差分钟数
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
